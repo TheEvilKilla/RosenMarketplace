@@ -5,8 +5,6 @@ import {OfferCreationComponent} from './offer-creation/offer-creation.component'
 import {OfferListComponent} from './offer-list/offer-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [OfferItemComponent, OfferCreationComponent, OfferListComponent],
   imports: [
