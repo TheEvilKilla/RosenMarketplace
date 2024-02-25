@@ -1,0 +1,26 @@
+<header class="header">
+    <nav class="nav container">
+        <div class="nav_data">
+            <a href="/" class="nav_logo">
+                ROSEN Marketplace
+            </a>
+            <div class="nav_toggle" id="nav-toggle" (click)="toggleMenu()" [class.show-icon]="showMenu">
+                <i class="ri-menu-line nav_burger"></i>
+                <i class="ri-close-line nav_close"></i>
+            </div>
+        </div>
+        <div class="nav_menu" id="nav-menu" [class.show-menu]="showMenu">
+            <ul class="nav_list">
+                <li class="nav_link">
+                    <a href="/">List</a>
+                </li>
+                <li class="nav_link">
+                    <a href="/">Post new</a>
+                </li>
+                <li class="nav_link nav_user">
+                    Hello, {{ user?.name }}
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
