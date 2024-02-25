@@ -13,7 +13,6 @@ export class NavbarComponent {
 
   }
 
-
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
