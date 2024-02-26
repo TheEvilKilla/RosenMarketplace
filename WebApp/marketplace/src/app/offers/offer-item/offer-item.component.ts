@@ -12,7 +12,7 @@ export class OfferItemComponent implements OnInit {
   offer: OfferModel;
   title: string = 'Puff Pera Lona Impermeable Naranja';
   details: string = 'CarlosRobles 10/01/2024  14:00';
-  description: string = "Esto es la descripcion de algo";
+  description: string = "Esto es la descripcion de algo Esto es la descripcion de algoEsto es la descripcion de algoEsto es la descripcion de algo";
 
   constructor() { 
     // this.title = this.offer.title;

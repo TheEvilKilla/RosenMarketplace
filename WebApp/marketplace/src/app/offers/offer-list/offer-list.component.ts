@@ -9,9 +9,11 @@ export class OfferListComponent implements OnInit {
 
   pageSize = 4;
 
-  constructor() { }
+  constructor() { 
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+
+  }
 }
