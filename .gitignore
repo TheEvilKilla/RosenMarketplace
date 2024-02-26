@@ -267,8 +267,8 @@ project.lock.json
 *.feature.xlsx.*
 *.Specs_*.html
 
-#Angular cache
-.angular/cache/
+# Ignore cache created with the Angular CLI.
+.angular/
 
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
