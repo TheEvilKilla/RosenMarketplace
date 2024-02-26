@@ -268,7 +268,7 @@ project.lock.json
 *.Specs_*.html
 
 #Angular cache
-*.angular/cache/
+.angular/cache/
 
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
