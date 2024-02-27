@@ -1,4 +1,4 @@
-<div class="list_container">
+<!-- <div class="list_container">
   <div class="list">
     <div class="div1">
       <app-offer-item></app-offer-item>
@@ -11,6 +11,67 @@
     </div>
     <div class="div4">
       <app-offer-item></app-offer-item>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="list_container">
+  <div class="list" *ngFor="let offer of offers.slice(initialElement, currentElement)">
+    <div class="div1">
+      <app-offer-item [offer]="offer"></app-offer-item>
+    </div>
+    <div class="div2">
+      <app-offer-item [offer]="offer"></app-offer-item>
+    </div>
+    <div class="div3">
+      <app-offer-item [offer]="offer"></app-offer-item>
+    </div>
+    <div class="div4">
+      <app-offer-item [offer]="offer"></app-offer-item>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="list_container">
+  <div class="list">
+    <div class="div1">
+      <app-offer-item [offer]="offers[initialElement]"></app-offer-item>
+    </div>
+    <div *ngFor="let offer of offers.slice(initialElement + 1, currentElement)">
+      <div class="div2">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </div>
+      <div class="div3">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </div>
+      <div class="div4">
+        <app-offer-item [offer]="offer"></app-offer-item>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="list_container">
+  <div class="list">
+    <div class="div1">
+      <app-offer-item [offer]="offers[initialElement]"></app-offer-item>
+    </div>
+    <div class="div2">
+      <app-offer-item [offer]="offers[initialElement + 1]"></app-offer-item>
+    </div>
+    <div class="div3">
+      <app-offer-item [offer]="offers[initialElement + 2]"></app-offer-item>
+    </div>
+    <div class="div4">
+      <app-offer-item [offer]="offers[initialElement + 3]"></app-offer-item>
+    </div>
+  </div>
+</div> -->
+
+<div class="list_container">
+  <div class="list">
+    <div *ngFor="let offer of offers.slice(initialElement, currentElement); let i = index" [ngClass]="['generic', 'position-' + (i + 1)]">
+      <app-offer-item [offer]="offer"></app-offer-item>
     </div>
   </div>
 </div>

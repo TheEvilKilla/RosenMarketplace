@@ -72,6 +72,47 @@ namespace Marketplace.Api.Controllers
             return this.Ok(result);
         }
 
+        [HttpGet("{username}")]
+        public async Task<ActionResult<User>> GetUserByUsernameAsync(string username)
+        {
+            User result;
+
+            try
+            {
+                result = await this.userBl.GetUserByUsernameAsync(username).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return this.Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> Post([FromBody] User user)
+        {
+            User result;
+
+            try
+            {
+                result = await this.userBl.AddUserAsync(user).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            return this.Ok(result);
+        }
+
         #endregion
     }
 }

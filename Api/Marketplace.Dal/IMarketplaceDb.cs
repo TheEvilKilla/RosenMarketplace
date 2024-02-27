@@ -14,4 +14,8 @@ namespace Marketplace.Dal;
 public interface IMarketplaceDb
 {
     Task<User[]> GetUsersAsync();
+
+    Task<User> GetUserByUsernameAsync(string username);
+
+    Task<User> AddUserAsync(User user);
 }

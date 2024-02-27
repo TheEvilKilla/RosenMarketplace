@@ -37,5 +37,15 @@ public class UserRepository : IUserRepository
         return await _context.GetUsersAsync();
     }
 
+    public async Task<User> GetUserByUsernameAsync(string username)
+    {
+        return await _context.GetUserByUsernameAsync(username);
+    }
+    
+    public async Task<User> AddUserAsync(User user)
+    {
+        return await _context.AddUserAsync(user);
+    }
+
     #endregion
 }

@@ -24,5 +24,9 @@ public interface IUserRepository
     /// <returns>Array of users</returns>
     Task<User[]> GetAllUsersAsync();
 
+    Task<User> GetUserByUsernameAsync(string username);
+
+    Task<User> AddUserAsync(User user);
+
     #endregion
 }

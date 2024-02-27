@@ -47,5 +47,15 @@ public class UserBl : IUserBl
         return await userRepository.GetAllUsersAsync().ConfigureAwait(false);
     }
 
+    public async Task<User> GetUserByUsernameAsync(string username)
+    {
+        return await userRepository.GetUserByUsernameAsync(username).ConfigureAwait(false);
+    }
+
+    public async Task<User> AddUserAsync(User user)
+    {
+        return await userRepository.AddUserAsync(user).ConfigureAwait(false);
+    }
+
     #endregion
 }

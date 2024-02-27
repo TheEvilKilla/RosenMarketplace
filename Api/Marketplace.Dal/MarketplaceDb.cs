@@ -65,5 +65,65 @@ namespace Marketplace.Dal
                 throw;
             }
         }
+
+        public async Task<User> GetUserByUsernameAsync(string username)
+        {
+            string sql = "SELECT Id, Username FROM User WHERE Username = @Username;";
+
+            await using var command = new SqliteCommand(sql, _connection);
+            command.Parameters.AddWithValue("@Username", username);
+
+            try
+            {
+                await _connection.OpenAsync();
+                await using var reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    var user = new User
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                        Username = reader.GetString(reader.GetOrdinal("Username"))
+                    };
+
+                    return user;
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
+        }
+
+        public async Task<User> AddUserAsync(User user)
+        {
+            string sql = "INSERT INTO User (Username) VALUES (@Username); SELECT last_insert_rowid();";
+
+            await using var command = new SqliteCommand(sql, _connection);
+            command.Parameters.AddWithValue("@Username", user.Username);
+
+            try
+            {
+                await _connection.OpenAsync();
+                user.Id = (int)(long)await command.ExecuteScalarAsync();
+                return user;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
+        }
     }
 }
