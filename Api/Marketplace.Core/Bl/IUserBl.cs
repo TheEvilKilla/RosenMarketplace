@@ -6,6 +6,7 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Marketplace.Core.Model;
@@ -28,6 +29,16 @@ public interface IUserBl
     Task<User> GetUserByUsernameAsync(string username);
 
     Task<User> AddUserAsync(User user);
+
+    Task<Offer> AddOfferAsync(Offer offer, int userId);
+
+    Task<Category> AddCategoryAsync(Category category);
+
+    Task<Offer> GetOfferAsync(Guid offerId);
+
+    Task<Category> GetCategoryAsync(byte id);
+
+    Task<User> GetUserByIdAsync(int id);
 
     #endregion
 }

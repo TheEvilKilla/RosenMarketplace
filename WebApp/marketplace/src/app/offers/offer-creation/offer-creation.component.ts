@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UntypedFormGroup} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { UntypedFormGroup } from '@angular/forms';
+import { MarketplaceApiService } from 'src/app/core/marketplace-api/marketplace-api.service';
 
 @Component({
   selector: 'app-offer-creation',
@@ -13,12 +14,14 @@ export class OfferCreationComponent implements OnInit {
   @Input()
   categories: string[];
 
-  constructor() { }
+  constructor(private marketplaceApiService: MarketplaceApiService) { }
 
   ngOnInit(): void {
   }
 
   offerSubmit() {
-    // TODO: implement submit logic
+    this.marketplaceApiService.postOffer(this.offerForm.value).subscribe(() => {
+      console.log('Offer created');
+    });
   }
 }

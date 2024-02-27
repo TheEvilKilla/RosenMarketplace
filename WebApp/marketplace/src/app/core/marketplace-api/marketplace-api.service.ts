@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { OfferModel } from './models/offer.model';
+import { OfferModel, UserModel } from './models/offer.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -16,9 +16,11 @@ export class MarketplaceApiService {
     return this.http.get<OfferModel[]>(`${this.marketplaceApUrl}`);
   }
 
+  getUserByUserName(userName: string): Observable<UserModel> {
+    return this.http.get<UserModel>(`${this.marketplaceApUrl}/${userName}`);
+  }
+
   postOffer(offer: OfferModel): Observable<string> {
-    // TODO: implement the logic to post a new offer, also validate whatever you consider before posting
-    //Validar que el usuario exista
     return this.http.post<any>(`${this.marketplaceApUrl}`, offer);
   }
 

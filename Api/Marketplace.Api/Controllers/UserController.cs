@@ -95,7 +95,7 @@ namespace Marketplace.Api.Controllers
             return this.Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("AddUser")]
         public async Task<ActionResult<User>> Post([FromBody] User user)
         {
             User result;
@@ -108,6 +108,88 @@ namespace Marketplace.Api.Controllers
             {
                 this.logger?.LogError(ex, ex.Message);
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            return this.Ok(result);
+        }
+
+        [HttpPost("AddOffer/{userId}")]
+        public async Task<ActionResult<Offer>> Post(int userId, [FromBody] Offer offer)
+        {
+            Offer result;
+
+            try
+            {
+                result = await this.userBl.AddOfferAsync(offer, userId).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            return this.Ok(result);
+        }
+
+        [HttpPost("AddCategory")]
+        public async Task<ActionResult<Category>> PostCategory([FromBody] Category category)
+        {
+            Category result;
+
+            try
+            {
+                result = await this.userBl.AddCategoryAsync(category).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            return this.Ok(result);
+        }
+
+        [HttpGet("GetOffer/{offerId}")]
+        public async Task<ActionResult<Offer>> GetOffer(Guid offerId)
+        {
+            Offer result;
+
+            try
+            {
+                result = await this.userBl.GetOfferAsync(offerId).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return this.Ok(result);
+        }
+
+        [HttpGet("GetCategory/{id}")]
+        public async Task<ActionResult<Category>> GetCategory(byte id)
+        {
+            Category result;
+
+            try
+            {
+                result = await this.userBl.GetCategoryAsync(id).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                this.logger?.LogError(ex, ex.Message);
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server Error.");
+            }
+
+            if (result == null)
+            {
+                return NotFound();
             }
 
             return this.Ok(result);

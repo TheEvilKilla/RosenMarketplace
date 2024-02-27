@@ -8,9 +8,9 @@ export class OfferModel {
   // title: string;
   // userId: number; //Tiny int
 
-  constructor(public user: string, public category: CategoryModel, public description: string, 
-    public id: number, public location: string, public pictureUrl: string, 
-    public publishedOn: Date, public title: string, public userId: number) {
+  constructor(public id: number, public title: string, public description: string,
+    public location: string, public pictureUrl: string, public publishedOn: Date,
+    public user: UserModel, public category: CategoryModel) {
 
   }
 }
@@ -18,6 +18,11 @@ export class OfferModel {
 export interface CategoryModel {
   id: number;
   name: string;
-  //The offers that belong to this category
   offers: OfferModel[];
 }
+
+export interface UserModel {
+  id: number;
+  userName: string;
+  offers: OfferModel[];
+} 

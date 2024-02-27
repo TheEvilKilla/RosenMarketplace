@@ -6,6 +6,7 @@
 //  writing by an officer of ROSEN. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Marketplace.Core.Bl;
@@ -55,6 +56,31 @@ public class UserBl : IUserBl
     public async Task<User> AddUserAsync(User user)
     {
         return await userRepository.AddUserAsync(user).ConfigureAwait(false);
+    }
+
+    public async Task<Offer> AddOfferAsync(Offer offer, int userId)
+    {
+        return await userRepository.AddOfferAsync(offer, userId).ConfigureAwait(false);
+    }
+
+    public async Task<Category> AddCategoryAsync(Category category)
+    {
+        return await userRepository.AddCategoryAsync(category).ConfigureAwait(false);
+    }
+
+    public async Task<Offer> GetOfferAsync(Guid offerId)
+    {
+        return await userRepository.GetOfferAsync(offerId).ConfigureAwait(false);
+    }
+
+    public async Task<Category> GetCategoryAsync(byte id)
+    {
+        return await userRepository.GetCategoryAsync(id).ConfigureAwait(false);
+    }
+
+    public async Task<User> GetUserByIdAsync(int id)
+    {
+        return await userRepository.GetUserByIdAsync(id).ConfigureAwait(false);
     }
 
     #endregion
